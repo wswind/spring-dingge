@@ -1,30 +1,33 @@
 package com.ws.demo;
 
-import java.util.Arrays;
-
-import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
+
 
 @SpringBootApplication
-public class DemoApplication {
+public class DemoApplication implements ApplicationRunner {
 
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
-	@Bean
-	public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
-		return args->{
-			System.out.println("Inspect beans by spring boot:");
-			String[] beanNames = ctx.getBeanDefinitionNames();
-			Arrays.sort(beanNames);
-			for(String beanName : beanNames){
-				System.out.println(beanName);
-			}
-		};
+	// @Bean
+	// public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
+	// 	return args -> {
+	// 		System.out.println("Inspect beans by spring boot:");
+	// 		String[] beanNames = ctx.getBeanDefinitionNames();
+	// 		Arrays.sort(beanNames);
+	// 		for (String beanName : beanNames) {
+	// 			System.out.println(beanName);
+	// 		}
+	// 	};
+	// }
+
+	@Override
+	public void run(ApplicationArguments args) throws Exception {
+		System.out.println("hello world from Application Runner Demo");
 	}
 
 }
