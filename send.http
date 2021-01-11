@@ -7,3 +7,7 @@ GET http://localhost:8080/actuator/info
 
 ###
 GET http://localhost:8080/actuator
+
+
+###
+GET http://localhost:8080/name
