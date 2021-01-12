@@ -16,16 +16,32 @@ GET http://localhost:8080/name
 GET http://localhost:8080/api/student
 
 ###
-GET http://localhost:8080/api/student/14
+GET http://localhost:8080/api/student/1
 
 ###
-POST http://localhost:8080/api/student/create HTTP/1.1
+POST http://localhost:8080/api/student HTTP/1.1
 content-type: application/json
 
 {
-    "id":"14",
+    "id":"15",
     "name":"Joan",
     "age":23,
     "email":"test@a.com",
     "subject":"subject1 joan"
 }
+
+###
+PUT http://localhost:8080/api/student/5 HTTP/1.1
+content-type: application/json
+
+{
+    "id":"1",
+    "name":"Joan",
+    "age":23,
+    "email":"test@a.com",
+    "subject":"subject1 joan"
+}
+
+
+###
+DELETE http://localhost:8080/api/student/1 HTTP/1.1

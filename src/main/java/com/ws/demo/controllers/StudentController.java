@@ -9,9 +9,11 @@ import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
@@ -35,10 +37,28 @@ public class StudentController {
     public ResponseEntity<Object> GetStudentById(@PathVariable String studentId){
         return new ResponseEntity<>(studentsRepo.get(studentId),HttpStatus.OK);
     }
-    @PostMapping(value = "create")
+    @PostMapping(value = "")
     public ResponseEntity<Object> createStudent(@RequestBody Student student){
         studentsRepo.put(student.getId(), student);
         return new ResponseEntity<>("Student Created", HttpStatus.CREATED);
+    }
+
+    @PutMapping(value = "{studentId}")
+    public ResponseEntity<Object> updateStudent(@PathVariable("studentId") String studentId, @RequestBody Student student){
+        if(!studentsRepo.containsKey(studentId)){
+            throw new StudentNotFoundException();
+        }
+
+        studentsRepo.remove(studentId);
+        student.setId(studentId);
+        studentsRepo.put(studentId, student);
+        return new ResponseEntity<>("Student updated",HttpStatus.OK);
+    }
+
+    @DeleteMapping(value = "{studentId}")
+    public ResponseEntity<Object> DeleteStudentById(@PathVariable String studentId){
+        studentsRepo.remove(studentId);
+        return new ResponseEntity<>("Student is deleted",HttpStatus.OK);
     }
 }
 
