@@ -11,3 +11,21 @@ GET http://localhost:8080/actuator
 
 ###
 GET http://localhost:8080/name
+
+###
+GET http://localhost:8080/api/student
+
+###
+GET http://localhost:8080/api/student/14
+
+###
+POST http://localhost:8080/api/student/create HTTP/1.1
+content-type: application/json
+
+{
+    "id":"14",
+    "name":"Joan",
+    "age":23,
+    "email":"test@a.com",
+    "subject":"subject1 joan"
+}
