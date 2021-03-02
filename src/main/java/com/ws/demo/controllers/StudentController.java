@@ -1,5 +1,6 @@
 package com.ws.demo.controllers;
 
+import com.ws.demo.exception.StudentNotFoundException;
 import com.ws.demo.models.Student;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
